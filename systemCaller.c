@@ -8,16 +8,19 @@
 #include <errno.h> 
 #include <sys/stat.h>
 
+// 30
 int main(){
 
 }
 
+// 20
 int executeCommand(char* []){
 
 }
 
+// 5
 void changeDirectories(char*){
-
+    
 }
 
 int parseInput(char *input, char *splitWords[]){
