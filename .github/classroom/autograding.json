@@ -1,0 +1,24 @@
+{
+  "tests": [
+    {
+      "name": "exec test",
+      "setup": "gcc -o sys systemCaller.c",
+      "run": "./sys",
+      "input": "mkdir temp\r\nls -la",
+      "output": "temp",
+      "comparison": "included",
+      "timeout": 2,
+      "points": null
+    },
+    {
+      "name": "change dir",
+      "setup": "gcc -o sys systemCaller.c",
+      "run": "./sys",
+      "input": "mkdir temp\r\ncd temp",
+      "output": "",
+      "comparison": "included",
+      "timeout": 2,
+      "points": null
+    }
+  ]
+}
