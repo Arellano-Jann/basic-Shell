@@ -37,7 +37,14 @@ void changeDirectories(char* path){
     }
 }
 
-int parseInput(char *input, char *splitWords[]);
+int parseInput(char *input, char *splitWords[]){
+    int wordInd = 0;
+    splitWords[0] = strtok(input, " \n");
+    while(splitWords[wordInd] != NULL){
+        splitWords[++wordInd] = strtok(NULL, " \n");
+    }
+    return wordInd;
+}
 
 // 30
 int main(){
@@ -47,11 +54,3 @@ int main(){
 }
 
 
-int parseInput(char *input, char *splitWords[]){
-    int wordInd = 0;
-    splitWords[0] = strtok(input, " \n");
-    while(splitWords[wordInd] != NULL){
-        splitWords[++wordInd] = strtok(NULL, " \n");
-    }
-    return wordInd;
-}
