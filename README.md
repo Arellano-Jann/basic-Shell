@@ -86,7 +86,14 @@ Where the pointer to the ls command is at splitWords[0], while the arguments(-la
 _main_ <br/>
 **Input Parameters**: none<br/>
 **Returned Output**: int <br/>
-**Functionality**: The main function is responsible for generating the shell and looping until a user chooses to exit. It should display _exampleShell`<netid`>$ _ (where you replace `<netid`> with your netid). Pass the user input in to parseInput, and fill the passed in 2d array with the arguments entered by the user. Add  NULL as the last string in the array so that execvp executes correctly. Check the first argument of the filled array. If it is anything other than cd or exit, you should call _executeCommand_ and pass it the newly filled 2d array. If it is cd, changeDirectories should be called with appropriate arguments. If it is exit, stop looping and return from main. The return from executeCommand function should be stored as an int, and used to determine if the call was successful (1 or -1 are usually failure in Unix). You can use [strcmp](https://www.cplusplus.com/reference/cstring/strcmp/) to check the arguments entered by the user in your shell.<br/>
+**Functionality**: The main function is responsible for generating the shell and looping until a user chooses to exit. 
+1. It should display _exampleShell`<netid`>$ _ (where you replace `<netid`> with your netid). 
+2. Pass the user input in to parseInput, and fill the passed in 2d array with the arguments entered by the user. 
+3. Add  NULL as the last string in the array so that execvp executes correctly. 
+4. Check the first argument of the filled array. 
+5. If it is anything other than cd or exit, you should call _executeCommand_ and pass it the newly filled 2d array. 
+6. If it is cd, changeDirectories should be called with appropriate arguments. 
+7. If it is exit, stop looping and return from main. The return from executeCommand function should be stored as an int, and used to determine if the call was successful (1 or -1 are usually failure in Unix). You can use [strcmp](https://www.cplusplus.com/reference/cstring/strcmp/) to check the arguments entered by the user in your shell.<br/>
  
 
 _executeCommand_<br/>

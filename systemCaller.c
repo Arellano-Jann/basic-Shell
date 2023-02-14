@@ -48,7 +48,31 @@ int parseInput(char *input, char *splitWords[]){
 
 // 30
 int main(){
+    char cliInput[1024], *cmd[1024];
+    int inp = 0;
+
+#define CHANGE_DIR (words[0][0] == 'c' && words[0][1] == 'd')
+
     while (1){
+        printf("exampleShell888000855$\n");
+        fgets(cliInput, 1024, stdin);
+        inp = parseInput(cliInput, cmd);
+        if (inp == 0) continue; // if empty input, continue
+
+        char* command = cmd[0];
+        if (strcomp(command, "exit") == 0){
+            exit(0);
+        }
+        else if (strcomp(command, "cd") == 0){
+            changeDirectories(cmd[1]);
+        }
+        else{
+            int failed = executeCommand(cmd);
+            if (failed){
+                printf("Failed!");
+                exit(1);
+            }
+        }
 
     }
 }
