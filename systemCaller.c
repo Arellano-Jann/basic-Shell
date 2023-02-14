@@ -13,18 +13,18 @@ int executeCommand(char* cmd[]){
     pid_t pid = fork();
 
     if (pid == -1){ // if unsuccessful
-        printf("Error in creating child process!");
+        printf("Error in creating child process!\n");
         return 1;
     }
     
     if (pid == 0){ // Child successfully created
         if (execvp(cmd[0], cmd) == -1){ // if unsuccessful. code has side effects
-            printf("Command Not Found!");
+            printf("Command Not Found!\n");
             return 1;
         }
     }
     else if (waitpid(pid, NULL, 0) == -1){// can also be waitpid(pid, &status, 0) // if unsuccessful
-        printf("Error in waiting for child process!");
+        printf("Error in waiting for child process!\n");
         return 1;
     }
     return 0;
@@ -33,7 +33,7 @@ int executeCommand(char* cmd[]){
 // 5
 void changeDirectories(char* path){
     if (chdir(path) != 0){
-        printf("Path Not Found!");
+        printf("Path Not Found!\n");
     }
 }
 
@@ -51,25 +51,23 @@ int main(){
     char cliInput[1024], *cmd[1024];
     int inp = 0;
 
-#define CHANGE_DIR (words[0][0] == 'c' && words[0][1] == 'd')
-
     while (1){
-        printf("exampleShell888000855$\n");
+        printf("exampleShell888000855$ ");
         fgets(cliInput, 1024, stdin);
         inp = parseInput(cliInput, cmd);
         if (inp == 0) continue; // if empty input, continue
 
         char* command = cmd[0];
-        if (strcomp(command, "exit") == 0){
+        if (strcmp(command, "exit") == 0){
             exit(0);
         }
-        else if (strcomp(command, "cd") == 0){
+        else if (strcmp(command, "cd") == 0){
             changeDirectories(cmd[1]);
         }
         else{
             int failed = executeCommand(cmd);
             if (failed){
-                printf("Failed!");
+                printf("Failed!\n");
                 exit(1);
             }
         }
